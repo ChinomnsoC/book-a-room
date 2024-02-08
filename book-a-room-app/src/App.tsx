@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import RoomCategories from './components/RoomCategories';
+import RoomCategories from './components/room-categories/RoomCategories';
 
 const App: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);

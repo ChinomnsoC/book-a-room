@@ -1,5 +1,4 @@
 from fastapi import FastAPI, HTTPException, BaseModel
-
 from typing import List, Optional
 
 from room_data import room_data

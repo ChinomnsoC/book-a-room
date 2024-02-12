@@ -1,25 +1,21 @@
 import React from 'react';
-
-import EnsuiteBedrooms from './ensuite-bedrooms/EnsuiteBedrooms';
-import GroupRooms from './group-rooms/GroupRooms';
-import Hostels from './hostels/Hostels';
+import { Link } from 'react-router-dom';
 
 
-interface RoomCategoriesProps {
-  onSelectCategory: (category: string) => void;
-}
-
-const RoomCategories: React.FC<RoomCategoriesProps> = ({ onSelectCategory }) => {
-
+const RoomCategories: React.FC = () => {
   return (
-    <div className="room-categories">
-      <h2>Room Categories</h2>
-      <div className="category-buttons">
-        <EnsuiteBedrooms onSelectCategory={() => onSelectCategory('Ensuite Bedrooms')} />
-        <GroupRooms onSelectCategory={() => onSelectCategory('Group Rooms')} />
-        <Hostels onSelectCategory={() => onSelectCategory('Hostels')} />
+      <div>
+          <h2>Room Categories</h2>
+          <Link to="/rooms/ensuite">
+              <button>Ensuite Bedrooms</button>
+          </Link>
+          <Link to="/rooms/group">
+              <button>Group Rooms</button>
+          </Link>
+          <Link to="/rooms/hostel">
+              <button>Hostels</button>
+          </Link>
       </div>
-    </div>
   );
 };
 

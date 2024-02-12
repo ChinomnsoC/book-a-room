@@ -1,24 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import RoomCategories from './components/room-categories/RoomCategories';
+import RoomListings from './components/room-listings/RoomListings';
+
 
 const App: React.FC = () => {
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-
-  const handleSelectCategory = (category: string) => {
-    setSelectedCategory(category);
-  };
-
   return (
-    <div className="App">
-      <h1>Room Booking App</h1>
-      <RoomCategories onSelectCategory={handleSelectCategory} />
-      {selectedCategory && (
-        <div>
-          <h2>Selected Category: {selectedCategory}</h2>
-          {/* Render rooms for the selected category */}
-        </div>
-      )}
-    </div>
+      <Router>
+          <div className="App">
+              <h1>Room Booking App</h1>
+              <Routes>
+                  <Route path="/" element={<RoomCategories />} />
+                  <Route path="/rooms/:category" element={<RoomListings />} />
+              </Routes>
+          </div>
+      </Router>
   );
 };
 

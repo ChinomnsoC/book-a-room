@@ -7,7 +7,7 @@ interface HostelsProps {
 const Hostels: React.FC<HostelsProps> = ({ onSelectCategory }) => {
   return (
     <button onClick={onSelectCategory} className="category-button">
-      Ensuite Bedrooms
+      Hostels
     </button>
   );
 };

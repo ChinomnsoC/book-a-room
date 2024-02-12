@@ -4,7 +4,8 @@ import { useParams } from "react-router-dom";
 
 interface Room {
     id: number;
-    name: string;
+    category: string;
+    availableRooms: number;
     amenities: string;
     walkingDistance: number;
     drivingDistance: number
@@ -20,7 +21,7 @@ const RoomListings: React.FC = () => {
     useEffect(() => {
         const fetchRooms = async() => {
             try{
-                const response = await axios.get(`/api/rooms/${category}`);
+                const response = await axios.get(`http://127.0.0.1:5000/api/rooms?category=${category}`);
                 setAvailableRooms(response.data);
             } catch(err){
                 console.log("Unable to fetch available rooms:", err);
@@ -31,11 +32,11 @@ const RoomListings: React.FC = () => {
 
     return (
         <div className="room-listings">
-            <h2>{category} Available ${category} Rooms</h2>
+            <h2> Available {category} Rooms</h2>
             {availableRooms.map(room => (
                 <div key={room.id}>
-                    <img src={room.image} alt={room.name} />
-                    <h3>{room.name}</h3>
+                    <img src={room.image} alt={room.category} />
+                    <h3>{room.category}</h3>
                     <p>{room.amenities}</p>
                     <p>{room.walkingDistance} mins walking distance, {room.drivingDistance} mins drive to the hall.</p>
                     <p>Price for the duration of the meeting: {room.price} NGN</p>
@@ -43,4 +44,6 @@ const RoomListings: React.FC = () => {
             ))}
         </div>
     );
-}
+};
+
+export default RoomListings

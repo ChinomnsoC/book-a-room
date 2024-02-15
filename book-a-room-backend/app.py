@@ -25,6 +25,10 @@ app.add_middleware(
 #     driving_distance: int
 #     image: str
 #     price: float
+
+@app.get("/")
+async def root():
+    return {"message": "Hello World"}
     
 @app.get("/api/rooms/{category}")
 async def get_rooms_by_category(building: str, category: str):

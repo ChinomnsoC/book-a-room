@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { getRoomsByCategory } from "../../services/api";
 
 interface Room {
     id: number;
@@ -15,20 +16,23 @@ interface Room {
 
 const RoomListings: React.FC = () => {
     // State for storing room data
+    const { building, category } = useParams<{ building?: string; category?: string }>();
     const [availableRooms, setAvailableRooms] = useState<Room[]>([]); //useState(() => Room());
-    const { category } = useParams<{ category: string }>();
 
     useEffect(() => {
-        const fetchRooms = async() => {
-            try{
-                const response = await axios.get(`http://127.0.0.1:5000/api/rooms?category=${category}`);
-                setAvailableRooms(response.data);
-            } catch(err){
-                console.log("Unable to fetch available rooms:", err);
+        if (building && category) {
+            const fetchRooms = async() => {
+                try{
+                    const roomsData = await getRoomsByCategory(building, category);
+                    setAvailableRooms(roomsData);
+                } catch(err){
+                    console.log("Unable to fetch available rooms:", err);
+                }
             }
+            fetchRooms();
         }
-        fetchRooms();
-    }, [category]);
+        
+    }, [building, category]);
 
     return (
         <div className="room-listings">

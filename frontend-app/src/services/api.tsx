@@ -5,7 +5,7 @@ axios.defaults.baseURL = 'http://127.0.0.1:8000';
 
 export const getRoomsByBuilding = async (building: string) => {
     try {
-        const response = await axios.get(`/api/rooms/${building}`);
+        const response = await axios.get(`/rooms/${building}`);
         return response.data;
     } catch (error) {
         throw new Error(`Error fetching rooms for building ${building}: ${error}`);
@@ -14,7 +14,7 @@ export const getRoomsByBuilding = async (building: string) => {
 
 export const getRoomsByCategory = async (building: string, category: string) => {
     try {
-        const response = await axios.get(`/api/rooms/${building}/${category}`);
+        const response = await axios.get(`/rooms/${building}/${category}`);
         return response.data;
     } catch (error) {
         throw new Error(`Error fetching rooms for building ${building} and category ${category}: ${error}`);

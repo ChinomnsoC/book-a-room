@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "book-a-room-backend"
+version = "0.1.0"
+description = "The backend of book a room website"
+authors = ["ChinomnsoC <chinomnsoc@gmail.com>"]
+readme = "README.md"
+packages = [{include = "book_a_room_backend"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+flask = "^3.0.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

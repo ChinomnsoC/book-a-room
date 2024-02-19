@@ -13,11 +13,7 @@ frontend-build:
 	}
 
 frontend-start:
-	@{ \
-		pushd ./frontend-app ;\
-		npm run start ;\
-		popd ;\
-	}
+	cd frontend-app && npm run start &
 
 # Backend commands
 backend-start:
@@ -29,4 +25,4 @@ backend-start:
 	}
 	
 # Combined commands
-start: backend-start frontend-start
+start: frontend-start backend-start

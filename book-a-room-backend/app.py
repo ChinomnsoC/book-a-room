@@ -30,8 +30,9 @@ app.add_middleware(
 async def root():
     return {"message": "Hello World"}
     
-@app.get("/api/rooms/{category}")
+@app.get("/rooms/{building}/{category}")
 async def get_rooms_by_category(building: str, category: str):
+    global rooms
     if building not in rooms:
         raise HTTPException(status_code=404, detail="Building not found")
     
@@ -39,7 +40,7 @@ async def get_rooms_by_category(building: str, category: str):
     selected_room = [room for room in rooms if room["category"] == category]
     return selected_room
 
-@app.get("/api/rooms/{building}")
+@app.get("/rooms/{building}")
 async def get_rooms_by_building(building: str):
     if building not in rooms:
         raise HTTPException(status_code=404, detail="Building not found")

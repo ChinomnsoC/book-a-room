@@ -1,17 +1,32 @@
 frontend-install:
-	cd frontend-app && npm install
+	@{ \
+		pushd ./frontend-app ;\
+		npm install ;\
+		popd ;\
+	}
 
 frontend-build:
-	cd frontend-app && npm run build
+	@{ \
+		pushd ./frontend-app ;\
+		npm run build ;\
+		popd ;\
+	}
+
+frontend-start:
+	@{ \
+		pushd ./frontend-app ;\
+		npm run start ;\
+		popd ;\
+	}
 
 # Backend commands
-backend-install:
-	cd book-a-room-backend && poetry install
-
-backend-run:
-	cd book-a-room-backend && poetry run uvicorn app:app --reload
-
+backend-start:
+	@{ \
+		pushd ./book-a-room-backend ;\
+		poetry install ;\
+		poetry run uvicorn app:app --reload ;\
+		popd ;\
+	}
+	
 # Combined commands
-install: frontend-install backend-install
-build: frontend-build
-start: build backend-run
+start: backend-start frontend-start

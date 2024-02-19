@@ -11,7 +11,7 @@ rooms = {
             'price': 5000  # Price in Nigerian Naira   
         },
             {
-            'id': 1,
+            'id': 2,
             'category': 'ensuite',
             'available_rooms': 10,
             'amenities': 'Rooms en-suite, fully air- conditioned with Tv, wardrobe and fan.',
@@ -33,7 +33,7 @@ rooms = {
             'price': 10000  # Price in Nigerian Naira   
         },
             {
-            'id': 1,
+            'id': 2,
             'category': 'ensuite',
             'available_rooms': 4,
             'amenities': 'Rooms en-suite, fully air- conditioned with Tv, wardrobe and fan.',
@@ -55,7 +55,7 @@ rooms = {
             'price': 10000  # Price in Nigerian Naira   
         },
             {
-            'id': 1,
+            'id': 2,
             'category': 'group',
             'available_rooms': 4,
             'amenities': 'Group rooms for 4, private bathroom, fully air- conditioned with with fan.',

@@ -12,13 +12,14 @@ frontend-build:
 		popd ;\
 	}
 
-frontend-start:
+frontend-start: frontend-install
 	cd frontend-app && npm run start &
 
 # Backend commands
 backend-start:
 	@{ \
 		pushd ./book-a-room-backend ;\
+		poetry shell ;\
 		poetry install ;\
 		poetry run uvicorn app:app --reload ;\
 		popd ;\

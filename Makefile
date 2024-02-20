@@ -19,7 +19,6 @@ frontend-start: frontend-install
 backend-start:
 	@{ \
 		pushd ./book-a-room-backend ;\
-		poetry shell ;\
 		poetry install ;\
 		poetry run uvicorn app:app --reload ;\
 		popd ;\

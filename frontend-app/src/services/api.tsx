@@ -12,11 +12,12 @@ export const getRoomsByBuilding = async (building: string) => {
     }
 };
 
-export const getRoomsByCategory = async (building: string, category: string) => {
+export const getRoomsByCategory = async (category: string) => {
     try {
-        const response = await axios.get(`/rooms/${building}/${category}`);
+        const response = await axios.get(`/rooms/${category}`);
+        console.log(response);
         return response.data;
     } catch (error) {
-        throw new Error(`Error fetching rooms for building ${building} and category ${category}: ${error}`);
+        throw new Error(`Error fetching rooms for category ${category}: ${error}`);
     }
 };

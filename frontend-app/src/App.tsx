@@ -11,7 +11,7 @@ const App: React.FC = () => {
               <h1>Room Booking App</h1>
               <Routes>
                   <Route path="/" element={<RoomCategories />} />
-                  <Route path="/rooms/:building/:category" element={<RoomListings />} />
+                  <Route path="/rooms/:category" element={<RoomListings />} />
               </Routes>
           </div>
       </Router>

@@ -19,6 +19,7 @@ app.add_middleware(
 # class Room(BaseModel):
 #     id: int
 #     category: str
+#     building_name: str
 #     available_rooms: int
 #     amenities: str
 #     walking_distance: int
@@ -30,15 +31,16 @@ app.add_middleware(
 async def root():
     return {"message": "Hello World"}
     
-@app.get("/rooms/{building}/{category}")
-async def get_rooms_by_category(building: str, category: str):
+@app.get("/rooms/{category}")
+async def get_rooms_by_category(category: str):
     global rooms
-    if building not in rooms:
-        raise HTTPException(status_code=404, detail="Building not found")
-    
-    rooms = rooms[building]
-    selected_room = [room for room in rooms if room["category"] == category]
-    return selected_room
+    selected_rooms = []
+    for building_rooms in rooms.values():
+        selected_rooms.extend([room for room in building_rooms if room["category"] == category])
+        print(selected_rooms)
+    if not selected_rooms:
+        raise HTTPException(status_code=404, detail="Rooms not found for the given category")
+    return selected_rooms
 
 @app.get("/rooms/{building}")
 async def get_rooms_by_building(building: str):

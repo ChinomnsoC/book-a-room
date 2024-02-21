@@ -8,8 +8,15 @@ packages = [{include = "book_a_room_backend"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-flask = "^3.0.2"
+black = "^24.1.1"
+fastapi = "^0.109.2"
+uvicorn = "^0.27.1"
+httpx = "^0.26.0"
 
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0.1"
+pytest-cov = "^4.1.0"
 
 [build-system]
 requires = ["poetry-core"]
